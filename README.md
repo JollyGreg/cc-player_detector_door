@@ -1,19 +1,22 @@
 # player_detector enabled door protection
 
 ## for your information
-requires:
+Blocks required:
 ```
 Player detector
 Computer
-redstone relay
+Redstone relay
 
-potentially:
-- modems
-- network cable
+Potentially requires:
+- 4 Modems
+- Network cable
 ```
 
-Reads player names from whitelist.txt
-does not automatically make the whitelist file this must be created manually
+Startup.lua reads player names from whitelist.txt.
+
+Whitelist file is not made automatically if it doesn't exist, this must be created manually
+
+## to make whitelist file
 seperate player names by new lines, for example:
 
 ```

@@ -5,15 +5,29 @@ function openDoor(openLength)
     
     relay.setOutput("top", true)
     os.sleep(openLength)
-    relay.setOutput("top", false)
-    
+    relay.setOutput("top", false)    
+end
 
+function load_whitelist()
+    local file = fs.open("whitelist.txt", "r")
+    local users = {}
+    while true do
+        local line = file.readLine()
+
+        -- If line is nil then we've reached the end of the file and should stop
+        if not line then break end
+
+        users[#users + 1] = line
+    end
     
+    file.close()
+
+    return users
 end
 
 function main()
     -- initialises whitelist and relay, closes door if left open
-    local whitelist = {"TheRealJollyGreg"}
+    local whitelist = load_whitelist()
     local relay = peripheral.find("redstone_relay")
     relay.setOutput("top", false)
 
